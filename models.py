@@ -14,6 +14,32 @@ def gen_uuid():
     return str(uuid.uuid4())
 
 
+class Family(Base):
+    __tablename__ = "families"
+
+    id = Column(UUID(as_uuid=False), primary_key=True, default=gen_uuid)
+    name = Column(String, nullable=False)
+    created_by = Column(UUID(as_uuid=False), ForeignKey("users.id"), nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    members = relationship("User", back_populates="family", foreign_keys="User.family_id")
+    invites = relationship("FamilyInvite", back_populates="family")
+
+
+class FamilyInvite(Base):
+    __tablename__ = "family_invites"
+
+    id = Column(UUID(as_uuid=False), primary_key=True, default=gen_uuid)
+    family_id = Column(UUID(as_uuid=False), ForeignKey("families.id"), nullable=False)
+    email = Column(String, nullable=False)
+    token = Column(String, unique=True, nullable=False, default=gen_uuid)
+    invited_by = Column(UUID(as_uuid=False), ForeignKey("users.id"), nullable=False)
+    accepted = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    family = relationship("Family", back_populates="invites")
+
+
 class User(Base):
     __tablename__ = "users"
 
@@ -23,8 +49,10 @@ class User(Base):
     role = Column(String, default="member")  # e.g. member/admin
     timezone = Column(String, nullable=False)
     hashed_password = Column(String, nullable=False)
+    family_id = Column(UUID(as_uuid=False), ForeignKey("families.id"), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
+    family = relationship("Family", back_populates="members", foreign_keys=[family_id])
     calendar_connections = relationship("CalendarConnection", back_populates="user")
     availability_slots = relationship("AvailabilitySlot", back_populates="user")
     status_logs = relationship("MarkStatusLog", back_populates="user")

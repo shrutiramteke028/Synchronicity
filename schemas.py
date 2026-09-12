@@ -3,12 +3,13 @@ from typing import Optional, List
 from pydantic import BaseModel, EmailStr
 
 
-# ---- Users ----
+# ---- Auth ----
 class UserCreate(BaseModel):
     name: str
     email: EmailStr
     password: str
     timezone: str
+    invite_token: Optional[str] = None  # if joining an existing family
 
 
 class UserOut(BaseModel):
@@ -17,10 +18,56 @@ class UserOut(BaseModel):
     email: EmailStr
     role: str
     timezone: str
+    family_id: Optional[str]
     created_at: datetime
 
     class Config:
         from_attributes = True
+
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+
+
+# ---- Families ----
+class FamilyCreate(BaseModel):
+    name: str
+
+
+class FamilyOut(BaseModel):
+    id: str
+    name: str
+    created_by: Optional[str]
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class InviteCreate(BaseModel):
+    email: EmailStr
+
+
+class InviteOut(BaseModel):
+    id: str
+    family_id: str
+    email: EmailStr
+    token: str
+    accepted: bool
+
+    class Config:
+        from_attributes = True
+
+
+# ---- Settings ----
+class TimezoneUpdate(BaseModel):
+    timezone: str  # e.g. "Asia/Kolkata"
 
 
 # ---- Calendar connections ----
