@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        background-color: #F8F6F1;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-highest": "#e2e0fc",
+            "surface-dim": "#dad7f3",
+            "surface-container": "#efecff",
+            "outline-variant": "#e5e2db",
+            "error": "#ba1a1a",
+            "primary": "#5146e5",
+            "on-primary": "#ffffff",
+            "background": "#F8F6F1",
+            "on-background": "#17172B",
+            "on-surface": "#17172B",
+            "on-surface-variant": "#6b7280"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#F8F6F1] font-sans text-[#17172B] flex flex-col min-h-screen antialiased selection:bg-[#5146e5]/10">
+<!-- Top Minimal App Bar -->
+<header class="fixed top-0 w-full z-40 pt-safe bg-[#F8F6F1]/90 backdrop-blur-md border-b border-[#EBE7DF]">
+<div class="h-14 px-5 flex items-center justify-between max-w-md mx-auto">
+<div class="flex items-center gap-2.5">
+<img alt="Synchronicity logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WoMcLekaV5qkn-7CT-d4PdmYsdSQDShW6AAN9hpVEmG1hXPJbvo68MjSQefFSc-WeR2IRipMPmRpyXxHyo-RuijcfGLEAd2inJHk6Lx5e5mgBKrFmq9feFEk13kKcruLo-X6HYuxkgb-lODZ0MYEu8dBYSjyyPwxXLSkUQabJh5kH1bwONkCaEJyCIxWaUtG2EAn5q7qNxx1Vk91nq1jIdLDaf2AbV0OqFr7SkQmwDUylyxqbEYD5slxk"/>
+<span class="font-bold text-[17px] text-[#17172B] tracking-tight">Synchronicity</span>
+</div>
+<span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#ECE8DF] text-[#6B7280]">v2.4</span>
+</div>
+</header>
+<!-- Main Scrollable Utilitarian Settings Canvas -->
+<main class="flex-1 w-full max-w-md mx-auto pt-20 pb-32 px-5">
+<!-- Title & Profile Header (Flat & Native) -->
+<div class="pt-3 pb-6">
+<h1 class="text-[32px] font-extrabold tracking-tight text-[#17172B] mb-5">Settings</h1>
+<!-- Profile Preview (Integrated native row, no floating cards) -->
+<div class="flex items-center justify-between py-2 border-b border-[#EBE7DF]">
+<div class="flex items-center gap-3.5 min-w-0">
+<img alt="Shruti Sharma" class="w-12 h-12 rounded-full object-cover shrink-0 ring-1 ring-[#E2DED5]" src="https://lh3.googleusercontent.com/aida/AEtjO1VZYWm_sOr81Ju5n5Ht3xw1yUiONHyMg8EK2U9k6YwDh6E2FlPTKzQIyIIiimEnZRTMxdjAlq_m1EGYSuSoZ3OM_JCW3gFyOmXLlfQA40I90EvtPShMpDBwh55zOdYe_zAdLfl982hrIFdaJHS-gVRX7bpfSs00fosMOg5atxw0Ce4iG_EzgEbCam9ZW4MwBuzVgyHW-nkSnl0kYw-pgcURFrXmGf2OHw5cCCv4A07LON0LOCBsrW3cKCk"/>
+<div class="min-w-0">
+<div class="font-bold text-[16px] text-[#17172B] tracking-tight truncate">Shruti Sharma</div>
+<div class="text-[13px] text-[#6B7280] truncate">shruti@synchronicity.family</div>
+</div>
+</div>
+<button class="text-[13px] font-semibold text-[#5146E5] hover:text-[#4338CA] px-2.5 py-1 rounded-md transition-colors shrink-0" type="button">Edit</button>
+</div>
+</div>
+<!-- Group 1: YOUR SCHEDULE -->
+<section class="mb-7">
+<div class="text-[11px] font-bold tracking-wider text-[#8A8894] uppercase pb-2">Your Schedule</div>
+<div class="divide-y divide-[#EBE7DF] border-t border-b border-[#EBE7DF]">
+<!-- Home Timezone -->
+<div class="py-3.5 flex items-center justify-between">
+<div>
+<div class="text-[12px] font-medium text-[#6B7280]">Home timezone</div>
+<div class="text-[14.5px] font-semibold text-[#17172B] mt-0.5">Asia/Kolkata · India (IST)</div>
+</div>
+<span class="material-symbols-outlined text-[#8A8894] text-[20px]">schedule</span>
+</div>
+<!-- Current Timezone -->
+<div class="py-3.5 flex items-center justify-between">
+<div>
+<div class="text-[12px] font-medium text-[#5146E5] flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#5146E5]"></span>
+<span>Current timezone</span>
+</div>
+<div class="text-[14.5px] font-semibold text-[#17172B] mt-0.5">Africa/Nairobi · East Africa (EAT)</div>
+<div class="text-[12px] text-[#6B7280] mt-0.5">2.5h behind home</div>
+</div>
+<span class="material-symbols-outlined text-[#5146E5] text-[20px]">travel_explore</span>
+</div>
+<!-- Sleep Schedule -->
+<div class="py-3.5 flex items-center justify-between">
+<div>
+<div class="text-[12px] font-medium text-[#6B7280]">Sleep schedule</div>
+<div class="text-[14.5px] font-semibold text-[#17172B] mt-0.5">11:00 PM – 7:00 AM <span class="text-[12px] text-[#6B7280] font-normal">(8h quiet time)</span></div>
+</div>
+<button class="text-[13px] font-semibold text-[#5146E5] hover:underline" type="button">Edit</button>
+</div>
+<!-- Preferred Call Duration -->
+<div class="py-3.5 space-y-2">
+<div class="text-[12px] font-medium text-[#6B7280]">Preferred call duration</div>
+<div class="grid grid-cols-4 gap-1 p-1 bg-[#ECE8DF]/80 rounded-xl">
+<button class="duration-btn py-1.5 text-xs font-semibold rounded-lg text-[#6B7280] hover:text-[#17172B] transition" type="button">15m</button>
+<button class="duration-btn py-1.5 text-xs font-semibold rounded-lg bg-[#5146E5] text-white shadow-sm transition" type="button">30m</button>
+<button class="duration-btn py-1.5 text-xs font-semibold rounded-lg text-[#6B7280] hover:text-[#17172B] transition" type="button">45m</button>
+<button class="duration-btn py-1.5 text-xs font-semibold rounded-lg text-[#6B7280] hover:text-[#17172B] transition" type="button">60m</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Group 2: NOTIFICATIONS -->
+<section class="mb-7">
+<div class="text-[11px] font-bold tracking-wider text-[#8A8894] uppercase pb-2">Notifications</div>
+<div class="divide-y divide-[#EBE7DF] border-t border-b border-[#EBE7DF]">
+<!-- Toggle 1 -->
+<label class="flex items-center justify-between py-3.5 cursor-pointer">
+<div class="pr-3">
+<div class="text-[14.5px] font-medium text-[#17172B]">When everyone is likely free</div>
+<div class="text-[12px] text-[#6B7280] mt-0.5">Notification when common family free windows open</div>
+</div>
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-[#D8D3C8] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#5146E5] relative shrink-0"></div>
+</label>
+<!-- Toggle 2 -->
+<label class="flex items-center justify-between py-3.5 cursor-pointer">
+<div class="pr-3">
+<div class="text-[14.5px] font-medium text-[#17172B]">10-minute call reminders</div>
+<div class="text-[12px] text-[#6B7280] mt-0.5">Advance notice before an upcoming scheduled conversation</div>
+</div>
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-[#D8D3C8] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#5146E5] relative shrink-0"></div>
+</label>
+<!-- Toggle 3 -->
+<label class="flex items-center justify-between py-3.5 cursor-pointer">
+<div class="pr-3">
+<div class="text-[14.5px] font-medium text-[#17172B]">Schedule shifts &amp; plot twists</div>
+<div class="text-[12px] text-[#6B7280] mt-0.5">Instant update when someone reschedules or updates availability</div>
+</div>
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-[#D8D3C8] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#5146E5] relative shrink-0"></div>
+</label>
+</div>
+</section>
+<!-- Group 3: PRIVACY & CALENDAR -->
+<section class="mb-7">
+<div class="text-[11px] font-bold tracking-wider text-[#8A8894] uppercase pb-2">Privacy &amp; Calendar</div>
+<div class="divide-y divide-[#EBE7DF] border-t border-b border-[#EBE7DF]">
+<!-- Calendar Connection -->
+<div class="py-3.5 flex items-center justify-between">
+<div>
+<div class="text-[14.5px] font-medium text-[#17172B]">Calendar connection</div>
+<div class="text-[12px] text-[#6B7280] mt-0.5">Google Calendar · Connected · Availability sync only</div>
+</div>
+<button class="text-[13px] font-semibold text-[#5146E5] hover:underline shrink-0" type="button">Manage</button>
+</div>
+<!-- Location Permission -->
+<div class="py-3.5 flex items-center justify-between">
+<div>
+<div class="text-[14.5px] font-medium text-[#17172B]">Location permission</div>
+<div class="text-[12px] text-[#6B7280] mt-0.5">Allowed · Used only for automatic timezone sync</div>
+</div>
+<div class="flex items-center gap-1 text-[12px] font-semibold text-emerald-800 bg-emerald-100/70 px-2 py-0.5 rounded-full shrink-0">
+<span class="material-symbols-outlined text-[15px]">check</span>
+<span>Allowed</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Group 4: FAMILY CODE -->
+<section class="mb-8">
+<div class="text-[11px] font-bold tracking-wider text-[#8A8894] uppercase pb-2">Family Code</div>
+<div class="border-t border-b border-[#EBE7DF] py-3.5 flex items-center justify-between">
+<div>
+<div class="text-[12px] font-medium text-[#6B7280]">Family sync code</div>
+<div class="text-[16px] font-bold tracking-wider text-[#17172B] mt-0.5">FAM-4821</div>
+</div>
+<button class="text-[13px] font-semibold text-white bg-[#5146E5] hover:bg-[#4338CA] px-3.5 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">share</span>
+<span>Share code</span>
+</button>
+</div>
+</section>
+<!-- Log Out Action (Subtle, clean red text) -->
+<div class="py-2 text-center">
+<button class="text-[14px] font-semibold text-rose-600 hover:text-rose-700 active:opacity-75 transition-opacity px-4 py-2" type="button">
+        Log out
+      </button>
+</div>
+<!-- Calming Signature Footnote -->
+<div class="text-center pt-8 pb-4 text-[#8A8894] text-[12px]">
+<p>Synchronicity · Keeping miles feeling like minutes</p>
+</div>
+</main>
+<!-- Bottom Navigation: 2 tabs only (Home & Settings) -->
+<nav class="fixed bottom-0 w-full z-50 pb-safe bg-[#F8F6F1]/95 backdrop-blur-md border-t border-[#EBE7DF]">
+<div class="flex items-center justify-around h-16 px-6 max-w-md mx-auto">
+<a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] gap-0.5 text-[#6B7280] hover:text-[#17172B] transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="text-[11px] font-medium">Home</span>
+</a>
+<a aria-current="page" class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] gap-0.5 text-[#5146E5] font-semibold transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px] [font-variation-settings:'FILL'_1]">settings</span>
+<span class="text-[11px]">Settings</span>
+</a>
+</div>
+</nav>
+<script>
+    // Segmented duration micro-interaction
+    const durationBtns = document.querySelectorAll('.duration-btn');
+    durationBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        durationBtns.forEach(b => {
+          b.classList.remove('bg-[#5146E5]', 'text-white', 'shadow-sm');
+          b.classList.add('text-[#6B7280]');
+        });
+        btn.classList.remove('text-[#6B7280]');
+        btn.classList.add('bg-[#5146E5]', 'text-white', 'shadow-sm');
+      });
+    });
+  </script>
+</body></html>

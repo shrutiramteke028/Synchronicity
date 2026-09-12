@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Synchronicity — The Moment</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@200..600,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "cream": "#F8F6F1",
+            "cream-tint": "#F1EDE4",
+            "midnight": "#17172B",
+            "electric": "#5146E5",
+            "electric-hover": "#4338CA",
+            "electric-subtle": "#EEEDFC",
+            "charcoal-muted": "#6C6B7E",
+            "warm-border": "#E8E4DA"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "-apple-system", "sans-serif"],
+            serif: ["Newsreader", "Georgia", "serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        background-color: #F8F6F1;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+      .pb-safe { padding-bottom: max(env(safe-area-inset-bottom, 16px), 16px); }
+      .pt-safe { padding-top: max(env(safe-area-inset-top, 16px), 16px); }
+    }
+    .fade-panel {
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
+</head>
+<body class="bg-[#F8F6F1] font-sans text-midnight min-h-screen flex flex-col pt-safe pb-safe antialiased selection:bg-electric-subtle selection:text-electric">
+<!-- Main Viewport Container -->
+<main class="w-full max-w-md mx-auto flex-1 flex flex-col justify-between px-6 py-4">
+<!-- Top Editorial Header & Quiet Progress -->
+<header class="w-full flex items-center justify-between pt-1 pb-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-midnight text-cream flex items-center justify-center shadow-sm">
+<span class="text-[13px] font-bold tracking-tight">S</span>
+</div>
+<span class="text-[12px] font-bold tracking-[0.24em] text-midnight uppercase">Synchronicity</span>
+</div>
+<!-- Quiet Progress Pill ("01 / 04") with interactive step toggles -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1">
+<button aria-label="Step 1" class="h-1.5 rounded-full transition-all duration-300 w-5 bg-electric" id="dot-0" onclick="goToStep(0)"></button>
+<button aria-label="Step 2" class="h-1.5 rounded-full transition-all duration-300 w-1.5 bg-warm-border" id="dot-1" onclick="goToStep(1)"></button>
+<button aria-label="Step 3" class="h-1.5 rounded-full transition-all duration-300 w-1.5 bg-warm-border" id="dot-2" onclick="goToStep(2)"></button>
+<button aria-label="Step 4" class="h-1.5 rounded-full transition-all duration-300 w-1.5 bg-warm-border" id="dot-3" onclick="goToStep(3)"></button>
+</div>
+<span class="text-[12px] font-mono font-medium text-charcoal-muted tracking-widest pl-1" id="step-counter">01 / 04</span>
+</div>
+</header>
+<!-- Content Narrative Flow -->
+<section class="flex-1 flex flex-col justify-center my-auto py-4">
+<!-- STEP 1: Hero Editorial Statement -->
+<div class="step-panel flex flex-col fade-panel" id="step-panel-0">
+<div class="mb-4 inline-flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-electric animate-pulse"></span>
+<span class="text-[11px] font-bold uppercase tracking-[0.2em] text-electric">The Overlap</span>
+</div>
+<h1 class="text-[34px] sm:text-[38px] leading-[1.08] font-extrabold tracking-[-0.035em] text-midnight uppercase mb-4">
+          The people<br/>
+          you love<br/>
+          aren’t always<br/>
+          in the same<br/>
+          timezone.
+        </h1>
+<div class="flex items-baseline gap-2 mb-3">
+<span class="font-serif italic text-2xl text-midnight font-normal">Let’s fix that.</span>
+</div>
+<p class="text-[15px] leading-relaxed text-charcoal-muted mb-8 max-w-[320px]">
+          Synchronicity continuously finds the moment your lives overlap.
+        </p>
+<!-- Primary Action Stack -->
+<div class="flex flex-col gap-3">
+<!-- Google CTA -->
+<button class="w-full h-14 bg-white hover:bg-[#FAF9F6] border border-warm-border text-midnight rounded-2xl px-5 flex items-center justify-between text-[15px] font-semibold tracking-tight shadow-[0_2px_8px_rgba(23,23,43,0.04)] active:scale-[0.98] transition-all" onclick="goToStep(1)">
+<div class="flex items-center gap-3.5">
+<svg class="w-5 h-5 flex-shrink-0" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path>
+</svg>
+<span>Continue with Google</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-charcoal-muted">arrow_forward</span>
+</button>
+<!-- Email CTA -->
+<button class="w-full h-14 bg-electric hover:bg-electric-hover text-white rounded-2xl px-5 flex items-center justify-between text-[15px] font-semibold tracking-tight shadow-[0_6px_20px_rgba(81,70,229,0.22)] active:scale-[0.98] transition-all" onclick="goToStep(1)">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+<span>Continue with Email</span>
+</div>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="mt-6 pt-5 border-t border-warm-border">
+<button class="group flex items-center justify-between w-full text-left" onclick="goToStep(1)">
+<span class="text-[13px] font-medium text-midnight group-hover:text-electric transition-colors">
+              Have an invite code? <span class="font-bold underline decoration-warm-border underline-offset-4">Join your family</span>
+</span>
+<span class="material-symbols-outlined text-[18px] text-charcoal-muted group-hover:text-electric group-hover:translate-x-1 transition-all">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- STEP 2: Join Family Step -->
+<div class="step-panel hidden flex-col fade-panel" id="step-panel-1">
+<div class="mb-3 inline-flex items-center gap-2">
+<span class="text-[11px] font-bold uppercase tracking-[0.2em] text-electric">Invitation</span>
+</div>
+<h2 class="text-[34px] leading-[1.1] font-extrabold tracking-[-0.03em] text-midnight uppercase mb-3">
+          Join your<br/>people.
+        </h2>
+<p class="text-[15px] leading-relaxed text-charcoal-muted mb-8">
+          Enter the 6-character code your family gave you.
+        </p>
+<!-- Stylized Large Code Input Box -->
+<div class="bg-white border-2 border-midnight/15 focus-within:border-electric rounded-2xl p-4 shadow-[0_2px_12px_rgba(23,23,43,0.03)] transition-all mb-4">
+<label class="block text-[11px] font-bold tracking-[0.16em] uppercase text-charcoal-muted mb-2" for="invite-code">Family Access Code</label>
+<div class="flex items-center justify-between">
+<input class="w-full bg-transparent border-0 p-0 text-[26px] font-mono tracking-[0.18em] font-bold text-midnight focus:ring-0 placeholder:text-neutral-300" id="invite-code" maxlength="8" type="text" value="FAM-4821"/>
+<div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+</div>
+</div>
+<!-- Detected Family Badge -->
+<div class="bg-cream-tint/70 border border-warm-border rounded-xl p-3.5 flex items-center gap-3 mb-8">
+<div class="w-7 h-7 rounded-lg bg-electric text-white flex items-center justify-center font-bold text-xs shrink-0">
+            S
+          </div>
+<div class="flex-1">
+<div class="text-[13px] font-bold text-midnight leading-tight">The Sharma Family</div>
+<div class="text-[12px] text-charcoal-muted">4 members connected across 3 timezones</div>
+</div>
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+</div>
+<button class="w-full h-14 bg-midnight hover:bg-black text-white rounded-2xl px-6 flex items-center justify-between text-[15px] font-semibold tracking-tight active:scale-[0.98] transition-all shadow-[0_6px_20px_rgba(23,23,43,0.18)]" onclick="goToStep(2)">
+<span>Join family</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<div class="mt-5 flex items-center justify-between text-[13px] px-1">
+<button class="text-charcoal-muted hover:text-midnight font-medium" onclick="goToStep(2)">Create a new circle instead</button>
+<button class="text-charcoal-muted hover:text-midnight flex items-center gap-1" onclick="goToStep(0)">
+<span class="material-symbols-outlined text-[16px]">west</span>
+<span>Back</span>
+</button>
+</div>
+</div>
+<!-- STEP 3: Calendar Step -->
+<div class="step-panel hidden flex-col fade-panel" id="step-panel-2">
+<div class="mb-3 inline-flex items-center gap-2">
+<span class="text-[11px] font-bold uppercase tracking-[0.2em] text-electric">Availability</span>
+</div>
+<h2 class="text-[32px] sm:text-[36px] leading-[1.1] font-extrabold tracking-[-0.03em] text-midnight uppercase mb-3">
+          Your calendar.<br/>Our starting<br/>point.
+        </h2>
+<p class="text-[15px] leading-relaxed text-charcoal-muted mb-6">
+          Connect Google Calendar so we can find moments that actually work.
+        </p>
+<!-- Visual reassurance cards -->
+<div class="bg-white border border-warm-border rounded-2xl p-5 mb-5 space-y-4 shadow-[0_2px_8px_rgba(23,23,43,0.03)]">
+<div class="flex items-start gap-3.5">
+<div class="w-8 h-8 rounded-xl bg-electric-subtle text-electric flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+</div>
+<div>
+<div class="text-[14px] font-bold text-midnight mb-0.5">Privacy First Promise</div>
+<p class="text-[13px] leading-relaxed text-charcoal-muted">
+                We check free/busy availability, never your event titles or private notes.
+              </p>
+</div>
+</div>
+<div class="pt-3 border-t border-warm-border flex items-center justify-between text-[12px] font-mono text-charcoal-muted">
+<span class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> End-to-end encrypted
+            </span>
+<span>No read/write of titles</span>
+</div>
+</div>
+<button class="w-full h-14 bg-electric hover:bg-electric-hover text-white rounded-2xl px-6 flex items-center justify-between text-[15px] font-semibold tracking-tight shadow-[0_6px_20px_rgba(81,70,229,0.22)] active:scale-[0.98] transition-all" onclick="goToStep(3)">
+<div class="flex items-center gap-3">
+<svg class="w-4 h-4 text-white fill-current" viewbox="0 0 24 24">
+<path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"></path>
+</svg>
+<span>Connect Calendar</span>
+</div>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<div class="mt-4 text-center">
+<button class="text-[13px] font-medium text-charcoal-muted hover:text-midnight" onclick="goToStep(3)">
+            Configure calendar later
+          </button>
+</div>
+</div>
+<!-- STEP 4: Timezone Step -->
+<div class="step-panel hidden flex-col fade-panel" id="step-panel-3">
+<div class="mb-3 inline-flex items-center gap-2">
+<span class="text-[11px] font-bold uppercase tracking-[0.2em] text-electric">Geography</span>
+</div>
+<h2 class="text-[32px] sm:text-[36px] leading-[1.1] font-extrabold tracking-[-0.03em] text-midnight uppercase mb-3">
+          Where are you<br/>right now?
+        </h2>
+<p class="text-[15px] leading-relaxed text-charcoal-muted mb-6">
+          You can change this whenever you travel. We keep the meeting time consistent for everyone.
+        </p>
+<!-- Timezone Cards -->
+<div class="space-y-3 mb-6">
+<!-- Home Base -->
+<div class="bg-white border border-warm-border rounded-2xl p-4 flex items-center justify-between shadow-[0_2px_6px_rgba(23,23,43,0.02)]">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-cream-tint flex items-center justify-center text-midnight font-bold text-sm">
+                🇮🇳
+              </div>
+<div>
+<span class="text-[11px] font-bold tracking-[0.14em] uppercase text-charcoal-muted">Home base</span>
+<div class="text-[15px] font-bold text-midnight">India · IST (Asia/Kolkata)</div>
+</div>
+</div>
+<span class="text-[11px] font-mono font-medium text-charcoal-muted px-2 py-1 bg-cream-tint rounded-md">+5:30</span>
+</div>
+<!-- Current Timezone -->
+<div class="bg-white border-2 border-electric rounded-2xl p-4 flex items-center justify-between shadow-[0_4px_12px_rgba(81,70,229,0.08)]">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-electric-subtle text-electric flex items-center justify-center font-bold text-sm">
+<span class="material-symbols-outlined text-[20px]">near_me</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-bold tracking-[0.14em] uppercase text-electric">Right now</span>
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+</div>
+<div class="text-[15px] font-bold text-midnight">India · IST</div>
+</div>
+</div>
+<button class="text-[12px] font-semibold text-electric hover:underline">Change</button>
+</div>
+</div>
+<!-- Enter living room CTA -->
+<button class="w-full h-14 bg-midnight hover:bg-black text-white rounded-2xl px-6 flex items-center justify-between text-[15px] font-semibold tracking-tight shadow-[0_6px_20px_rgba(23,23,43,0.18)] active:scale-[0.98] transition-all" id="finish-action-btn" onclick="completeFlow()">
+<span>Enter living room</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Refined Editorial Footer -->
+<footer class="w-full pt-4 pb-1 border-t border-warm-border/80 flex items-center justify-between text-[13px]">
+<div class="text-charcoal-muted">
+        Already registered?
+        <button class="text-midnight font-bold hover:text-electric transition-colors ml-1" onclick="goToStep(0)">Log in</button>
+</div>
+<div class="flex items-center gap-1 text-[11px] font-serif italic text-charcoal-muted">
+<span>The Moment</span>
+<span class="text-warm-border">/</span>
+<span>v2.4</span>
+</div>
+</footer>
+</main>
+<script>
+    let currentStep = 0;
+
+    function goToStep(index) {
+      currentStep = index;
+      for (let i = 0; i < 4; i++) {
+        const panel = document.getElementById('step-panel-' + i);
+        const dot = document.getElementById('dot-' + i);
+
+        if (panel && dot) {
+          if (i === index) {
+            panel.classList.remove('hidden');
+            dot.className = 'h-1.5 rounded-full transition-all duration-300 w-5 bg-electric';
+          } else {
+            panel.classList.add('hidden');
+            dot.className = 'h-1.5 rounded-full transition-all duration-300 w-1.5 ' + (i < index ? 'bg-midnight' : 'bg-warm-border');
+          }
+        }
+      }
+
+      const counter = document.getElementById('step-counter');
+      if (counter) {
+        counter.textContent = '0' + (index + 1) + ' / 04';
+      }
+    }
+
+    function completeFlow() {
+      const btn = document.getElementById('finish-action-btn');
+      if (!btn) return;
+      btn.innerHTML = '<span class="flex items-center gap-2"><span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span><span>Preparing your room...</span></span>';
+      setTimeout(() => {
+        btn.innerHTML = '<span>Welcome home</span><span class="material-symbols-outlined text-[18px]">check</span>';
+        btn.classList.remove('bg-midnight');
+        btn.classList.add('bg-electric');
+      }, 700);
+    }
+  </script>
+</body></html>
