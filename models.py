@@ -47,7 +47,8 @@ class User(Base):
     name = Column(String, nullable=False)
     email = Column(String, unique=True, nullable=False, index=True)
     role = Column(String, default="member")  # e.g. member/admin
-    timezone = Column(String, nullable=False)
+    home_timezone = Column(String, nullable=False)
+    current_timezone = Column(String, nullable=False)
     hashed_password = Column(String, nullable=False)
     family_id = Column(UUID(as_uuid=False), ForeignKey("families.id"), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
