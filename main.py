@@ -9,6 +9,9 @@ import schemas
 import auth
 import google_calendar
 from database import engine, get_db, Base
+from timezonefinder import TimezoneFinder
+
+tf = TimezoneFinder()  # loaded once — the lookup data is large, don't re-init per request
 
 # Creates tables if they don't exist yet — fine for dev,
 # swap for Alembic migrations once the schema stabilizes.
@@ -45,7 +48,8 @@ def signup(payload: schemas.UserCreate, db: Session = Depends(get_db)):
     user = models.User(
         name=payload.name,
         email=payload.email,
-        timezone=payload.timezone,
+        home_timezone=payload.home_timezone,
+        current_timezone=payload.home_timezone,  # starts the same as home; updated later if they move
         hashed_password=auth.hash_password(payload.password),
         family_id=family_id,
     )
@@ -258,7 +262,33 @@ def update_timezone(
     db: Session = Depends(get_db),
     current_user: models.User = Depends(auth.get_current_user),
 ):
-    current_user.timezone = payload.timezone
+    if payload.home_timezone is not None:
+        current_user.home_timezone = payload.home_timezone
+    if payload.current_timezone is not None:
+        current_user.current_timezone = payload.current_timezone
     db.commit()
     db.refresh(current_user)
+    return current_user
+
+
+@app.post("/users/me/location", response_model=schemas.UserOut)
+def update_location(
+    payload: schemas.LocationUpdate,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(auth.get_current_user),
+):
+    """Resolves GPS coordinates to a timezone and stores ONLY the result.
+    payload.latitude / payload.longitude go out of scope when this function
+    returns — they're never written to the database or logged anywhere."""
+    resolved_tz = tf.timezone_at(lat=payload.latitude, lng=payload.longitude)
+    if not resolved_tz:
+        raise HTTPException(status_code=400, detail="Could not resolve a timezone for that location")
+
+    if resolved_tz != current_user.current_timezone:
+        current_user.current_timezone = resolved_tz
+        db.commit()
+        db.refresh(current_user)
+        # TODO: enqueue a Celery task here — this user's real availability
+        # window just shifted, so predicted_windows should recompute.
+
     return current_user

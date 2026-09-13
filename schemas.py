@@ -8,7 +8,7 @@ class UserCreate(BaseModel):
     name: str
     email: EmailStr
     password: str
-    timezone: str
+    home_timezone: str
     invite_token: Optional[str] = None  # if joining an existing family
 
 
@@ -17,7 +17,8 @@ class UserOut(BaseModel):
     name: str
     email: EmailStr
     role: str
-    timezone: str
+    home_timezone: str
+    current_timezone: str
     family_id: Optional[str]
     created_at: datetime
 
@@ -67,7 +68,13 @@ class InviteOut(BaseModel):
 
 # ---- Settings ----
 class TimezoneUpdate(BaseModel):
-    timezone: str  # e.g. "Asia/Kolkata"
+    home_timezone: Optional[str] = None      # e.g. "Asia/Kolkata" — update if it changed
+    current_timezone: Optional[str] = None   # e.g. "Africa/Juba" — update when location changes
+
+
+class LocationUpdate(BaseModel):
+    latitude: float
+    longitude: float
 
 
 # ---- Calendar connections ----
