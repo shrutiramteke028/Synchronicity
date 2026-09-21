@@ -9,7 +9,6 @@ class UserCreate(BaseModel):
     email: EmailStr
     password: str
     home_timezone: str
-    invite_token: Optional[str] = None  # if joining an existing family
 
 
 class UserOut(BaseModel):
@@ -51,16 +50,46 @@ class FamilyOut(BaseModel):
         from_attributes = True
 
 
-class InviteCreate(BaseModel):
-    email: EmailStr
+class InviteLinkOut(BaseModel):
+    invite_code: str
+    invite_url: str
 
 
-class InviteOut(BaseModel):
+class JoinRequestOut(BaseModel):
     id: str
     family_id: str
-    email: EmailStr
-    token: str
-    accepted: bool
+    user_id: str
+    status: str
+    requested_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class MyJoinRequestOut(BaseModel):
+    id: str
+    family_id: str
+    family_name: str  # so the wait screen can say "waiting on The Cozy Circle Family"
+    status: str
+    requested_at: datetime
+
+
+class TransferAdminRequest(BaseModel):
+    new_admin_user_id: str
+
+
+class RecoveryInitiate(BaseModel):
+    target_admin_id: Optional[str] = None  # omit if the family only has one admin
+
+
+class RecoveryRequestOut(BaseModel):
+    id: str
+    family_id: str
+    requested_by: str
+    target_admin_id: str
+    status: str
+    requested_at: datetime
+    cooldown_ends_at: datetime
 
     class Config:
         from_attributes = True
@@ -75,6 +104,10 @@ class TimezoneUpdate(BaseModel):
 class LocationUpdate(BaseModel):
     latitude: float
     longitude: float
+
+
+class FcmTokenUpdate(BaseModel):
+    fcm_token: str
 
 
 # ---- Calendar connections ----
@@ -108,11 +141,13 @@ class AvailabilitySlotOut(BaseModel):
 
 # ---- Mark status logs ----
 class StatusLogCreate(BaseModel):
-    user_id: str
     status: str  # available/maybe/busy/sleeping/emergency
 
 
-class StatusLogOut(StatusLogCreate):
+class StatusLogOut(BaseModel):
+    id: str
+    user_id: str
+    status: str
     id: str
     logged_at: datetime
 
